@@ -214,7 +214,7 @@ class ExploreTab extends StatelessWidget {
       image: "images/nepo.jfif",
       fullDescription: "جبل يقع في الأردن، ويرتفع 817 مترا عن سطح البحر. يعتقد أن على الجبل وجدت مدينة نبو التي تبعد عن عمان 41 كيلومتراً وتبعد 10 كم إلى الغرب من مدينة مادبا",
       location: "مادبا",
-      year: "",
+      year: "تاريخي قديم",
       visitingHours: "8:00 ص - 6:00 م",
       ticketPrice: "3 دينار أردني",
     ),
@@ -325,6 +325,7 @@ class _QuizTabState extends State<QuizTab> {
   int _currentIdx = 0;
   final AudioPlayer _quizPlayer = AudioPlayer();
 
+  // تم تحديث القائمة لتشمل 5 أسئلة
   final List<Map<String, dynamic>> _questions = [
     {
       'q': "ما اسم الحضارة التي بنت البتراء؟",
@@ -340,6 +341,16 @@ class _QuizTabState extends State<QuizTab> {
       'q': "ماذا يضم جبل القلعة؟",
       'opts': ["مطار قديم", "آثار رومانية وأموية", "منتجع حديث"],
       'ans': 1
+    },
+    {
+      'q': "أين تقع قلعة عجلون؟",
+      'opts': ["في عجلون", "في إربد", "في جرش"],
+      'ans': 0
+    },
+    {
+      'q': "كم يبلغ ارتفاع جبل نيبو عن سطح البحر تقريباً؟",
+      'opts': ["500 متر", "1200 متر", "817 متر"],
+      'ans': 2
     },
   ];
 
@@ -375,7 +386,10 @@ class _QuizTabState extends State<QuizTab> {
                 children: [
                   LinearProgressIndicator(value: (_currentIdx + 1) / _questions.length),
                   const SizedBox(height: 30),
-                  Text(_questions[_currentIdx]['q'], style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  Text(_questions[_currentIdx]['q'], 
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)
+                  ),
                   const SizedBox(height: 30),
                   ...List.generate(3, (i) => Padding(
                     padding: const EdgeInsets.only(bottom: 10),
